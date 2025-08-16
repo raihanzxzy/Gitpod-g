@@ -24,9 +24,9 @@ WORKDIR /tmp
 # Unduh dan ekstrak Ghidra ke direktori home gitpod
 RUN echo "Mengunduh Ghidra dari ${GHIDRA_DOWNLOAD_URL}" && \
     wget -q "${GHIDRA_DOWNLOAD_URL}" && \
-    unzip -q "${GHIDRA_ZIP_NAME}" -d /home/gitpod/ && \
+    unzip -q "${GHIDRA_ZIP_NAME}" -d /workspace/Gitpod-g/ && \
     rm "${GHIDRA_ZIP_NAME}"
 
 # Kembali ke user gitpod dan atur direktori kerja
 USER gitpod
-WORKDIR /home/gitpod
+WORKDIR /workspace/Gitpod-g/
