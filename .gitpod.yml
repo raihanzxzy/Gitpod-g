@@ -1,0 +1,29 @@
+# .gitpod.yml
+image:
+  file: .gitpod.Dockerfile
+
+ports:
+  # Port untuk VNC (antarmuka desktop via web)
+  - port: 6080
+    onOpen: open-preview
+    name: Desktop UI
+    description: Ghidra graphical user interface
+  # Port internal untuk VNC Server
+  - port: 5900
+    onOpen: ignore
+
+tasks:
+  - name: Start VNC Server
+    command: |
+      echo "Memulai VNC Server..."
+      /usr/bin/startvnc.sh &> /tmp/vnc.log
+      echo "VNC Server telah dimulai. Antarmuka desktop tersedia di port 6080."
+      gp sync-done vnc
+  - name: Ghidra Instructions
+    command: |
+      gp sync-await vnc
+      echo -e "\n\n\n======================================================\n"
+      echo "  Untuk menjalankan Ghidra, buka Terminal di dalam"
+      echo "  desktop VNC (port 6080) dan jalankan perintah:"
+      echo "  /home/gitpod/ghidra_11.4.1_PUBLIC/ghidraRun"
+      echo -e "\n======================================================\n"
