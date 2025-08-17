@@ -19,7 +19,7 @@ RUN sudo apt-get update && \
     sudo rm -rf /var/lib/apt/lists/*
 
 # Pindah ke direktori /tmp untuk mengunduh file
-WORKDIR /workspace/Gitpod-g/
+WORKDIR /tmp
 
 # Unduh dan ekstrak Ghidra ke direktori home gitpod
 RUN echo "Mengunduh Ghidra dari ${GHIDRA_DOWNLOAD_URL}" && \
